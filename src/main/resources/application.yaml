@@ -1,0 +1,46 @@
+management:
+  tracing:
+    enabled: false
+  server:
+    port: 8090
+  endpoints:
+    enabled-by-default: true
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+      probes:
+        enabled: true
+  metrics:
+    tags:
+      application: demo
+
+spring:
+  jpa:
+    open-in-view: true
+    hibernate:
+      ddl-auto: create
+  datasource:
+    url: jdbc:h2:async:./demo;DB_CLOSE_ON_EXIT=FALSE
+
+decorator:
+  datasource:
+    datasource-proxy:
+      multiline: true
+      logging: slf4j
+      query:
+        enable-logging: false
+        log-level: debug
+        logger-name: com.example.demo.query-logger
+      slow-query:
+        enable-logging: true
+        log-level: warn
+        threshold: 300
+        logger-name: com.example.demo.slow-query-logger
+    flexy-pool:
+      metrics:
+        reporter:
+          jmx:
+            enabled: false
