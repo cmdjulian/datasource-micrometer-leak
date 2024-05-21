@@ -21,7 +21,7 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	runtimeOnly("com.h2database:h2")
 	implementation("net.ttddyy.observation:datasource-micrometer-spring-boot:1.0.3")
-	runtimeOnly("com.github.gavlyukovskiy:datasource-proxy-spring-boot-starter:1.9.1")
+	implementation("net.ttddyy:datasource-proxy:1.10")
 	runtimeOnly("io.micrometer:micrometer-registry-prometheus")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
